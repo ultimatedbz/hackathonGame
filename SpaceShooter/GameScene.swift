@@ -317,7 +317,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         mainLabel?.alpha = 1
         mainLabel?.text = "Game Over"
 
-        player?.removeFromParent()
+        playerTemp?.removeFromParent()
         enemyTemp?.removeFromParent()
 
         isAlive = false

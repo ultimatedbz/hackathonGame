@@ -34,9 +34,9 @@ class TitleScene: SKScene {
         gameTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300))
         guard let gameTitle = gameTitle else { return }
         gameTitle.textColor = textColorHUD
-        gameTitle.font = UIFont(name: "Futura", size: 60)
+        gameTitle.font = UIFont(name: "Futura", size: 40)
         gameTitle.textAlignment = .center
-        gameTitle.text = "Lyft Game"
+        gameTitle.text = "Save Humanity"
 
         self.view?.addSubview(gameTitle)
     }
