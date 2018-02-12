@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E256F7A202FE36400026543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E256F78202FE36400026543 /* Assets.xcassets */; };
 		873474A2202E3A900058A42E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873474A1202E3A900058A42E /* AppDelegate.swift */; };
 		873474A4202E3A900058A42E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 873474A3202E3A900058A42E /* GameScene.sks */; };
 		873474A6202E3A900058A42E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 873474A5202E3A900058A42E /* Actions.sks */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E256F78202FE36400026543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8734749E202E3A900058A42E /* SpaceShooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		873474A1202E3A900058A42E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		873474A3202E3A900058A42E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		87347495202E3A900058A42E = {
 			isa = PBXGroup;
 			children = (
+				5E256F78202FE36400026543 /* Assets.xcassets */,
 				873474A0202E3A900058A42E /* SpaceShooter */,
 				873474BB202E3A910058A42E /* SpaceShooterTests */,
 				873474C6202E3A910058A42E /* SpaceShooterUITests */,
@@ -267,6 +270,7 @@
 				873474DC202E7D6F0058A42E /* magic.sks in Resources */,
 				873474DE202E7D830058A42E /* bokeh.sks in Resources */,
 				873474A4202E3A900058A42E /* GameScene.sks in Resources */,
+				5E256F7A202FE36400026543 /* Assets.xcassets in Resources */,
 				873474AF202E3A900058A42E /* Assets.xcassets in Resources */,
 				873474D6202E5C1E0058A42E /* explosion.sks in Resources */,
 				873474B2202E3A900058A42E /* LaunchScreen.storyboard in Resources */,

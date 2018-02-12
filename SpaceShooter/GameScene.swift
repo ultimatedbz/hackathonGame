@@ -13,17 +13,22 @@ var player: SKSpriteNode? = .init()
 var projectile: SKSpriteNode? = .init()
 
 var scoreLabel: SKLabelNode? = .init()
+var livesLabel: SKLabelNode? = .init()
 var mainLabel: SKLabelNode? = .init()
+var savedLabel: SKLabelNode? = .init()
 
 var fireProjectileRate = 0.2
 var projectileSpeed = 0.9
 
 var enemySpeed = 1.8
-var enemySpawnRate = 0.6
+var enemySpawnRate = 0.2
 
 var isAlive = true
 
 var score = 0
+
+var livesCount = 1000
+var savedCount = 0
 
 var pressedDown = false
 
@@ -44,12 +49,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         spawnEnemy()
         spawnPlayer()
-        spawnScoreLabel()
-        spawnMainLabel()
+        //spawnScoreLabel()
+        //spawnMainLabel()
         fireProjectile()
         randonEnemyTimerSpawn()
         updateScore()
-        hideLabel()
+        //hideLabel()
         resetVariablesOnStart()
 
     }
@@ -60,7 +65,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if isAlive {
                 player?.position.x = touchLocation.x
             } else {
-                player?.position.x = -200
+                //player?.position.x = -200
             }
         }
     }
@@ -144,7 +149,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         scoreLabel.text = "Score"
         self.addChild(scoreLabel)
+        
+        livesLabel = SKLabelNode(fontNamed: "Futura")
+        guard let livesLabel = livesLabel else { return }
+        livesLabel.fontSize = 50
+        livesLabel.fontColor = textColorHUD
+        livesLabel.position = CGPoint(x: self.frame.minX + 150, y: self.frame.minY + 200)
+        
+        livesLabel.text = "Lives"
+        self.addChild(livesLabel)
 
+        savedLabel = SKLabelNode(fontNamed: "Futura")
+        guard let savedLabel = savedLabel else { return }
+        savedLabel.fontSize = 50
+        savedLabel.fontColor = textColorHUD
+        savedLabel.position = CGPoint(x: self.frame.minX + 150, y: self.frame.minY + 400)
+        
+        savedLabel.text = "Saved"
+        self.addChild(savedLabel)
     }
 
     func spawnMainLabel() {
@@ -283,6 +305,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             projectileCollision(enemyTemp: firstBody.node as! SKSpriteNode,
                                 projectileTemp: secondBody.node as! SKSpriteNode,
                                 scoreDiff: -1)
+            livesCount = max(0, livesCount - 1)
+            if livesCount <= 0 {
+                updateScore()
+                firstBody.node?.removeFromParent()
+                secondBody.node?.removeFromParent()
+                
+                mainLabel?.fontSize = 50
+                mainLabel?.alpha = 1
+                mainLabel?.text = ":'("
+
+                isAlive = false
+                waitThenMoveToTitleScreen()
+            }
         }
 
         if (firstBody.categoryBitMask == physicsCategory.player
@@ -331,6 +366,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             passTemp?.node?.removeFromParent()
         }
         score = score + 2
+        savedCount += 1
         updateScore()
     }
 
@@ -345,6 +381,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func updateScore() {
         scoreLabel?.text = "Score: \(score)"
+        livesLabel?.text = "Lives: \(livesCount)"
+        savedLabel?.text = "Saved: \(savedCount)"
     }
 
     func hideLabel() {
@@ -360,13 +398,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func resetVariablesOnStart() {
         isAlive = true
         score = 0
+        livesCount = 1000
+        savedCount = 0
     }
 
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         if !isAlive {
-            player?.position.x = -200
+            //player?.position.x = -200
         }
     }
 }
